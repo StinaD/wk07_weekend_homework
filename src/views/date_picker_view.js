@@ -11,6 +11,7 @@ DatePicker.prototype.bindEvents = function () {
     const chosenDate = event.target.date.value;
     const dateForApi = this.prepareDate(chosenDate);
     PubSub.publish('DatePicker:Date-info', dateForApi);
+    event.target.reset();
   });
 };
 

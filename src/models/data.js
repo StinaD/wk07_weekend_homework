@@ -8,32 +8,24 @@ const DataModel = function () {
 
 DataModel.prototype.bindEvents = function () {
   PubSub.subscribe('DatePicker:Date-info', (event) => {
-    url = `http://numbersapi.com/${event.detail}/date`;
-    const requestHelper = new RequestHelper(url);
-    requestHelper.get()
-      .then((dateFact) => {
-        this.fact = dateFact;
-        Pubsub.publish('Fact:date-fact', this.fact);
-      })
-      .catch((error) => {
-        PubSub.publish('Fact:error', error);
-      });
+    const urlInput = event.detail;
+    this.getData(urlInput);
   });
 };
 
 
-// MunrosModel.prototype.getData = function () {
-//   const url = `https://munroapi.herokuapp.com/api/munros`;
-//   const requestHelper = new RequestHelper(url);
-//   requestHelper.get()
-//     .then((munros) => {
-//       this.data = munros;
-//       PubSub.publish('Munros:munros-data-ready', this.data);
-//     })
-//     .catch((err) => {
-//       PubSub.publish('Munros:error', err);
-//     });
-// };
+DataModel.prototype.getData = function (urlNumbers) {
+  const url = `http://numbersapi.com/${urlNumbers}/date?json`;
+  const requestHelper = new RequestHelper(url);
+  requestHelper.get()
+    .then((dateFact) => {
+      this.fact = dateFact;
+      PubSub.publish('Data:date-fact', this.fact.text);
+    })
+    .catch((error) => {
+      PubSub.publish('Fact:error', error);
+    });
+};
 
 
 

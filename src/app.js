@@ -1,6 +1,8 @@
+const DateFactView = require('./views/date_fact_view.js');
+const ErrorView = require('./views/error_view.js');
 const DatePicker = require('./views/date_picker_view.js');
 const DataModel = require('./models/data.js');
-const DateFactView = require('./views/date_fact_view.js');
+
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log('JavaScript Loaded');
@@ -12,8 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const dataModel = new DataModel();
   dataModel.bindEvents();
 
-  const dateFactInfo = document.querySelector('#date-fact');
-  const dateFactView = new DateFactView(dateFactInfo);
-  dateFactView.bindEvents;
+  const dateFactContainer = document.querySelector('#date-fact');
+  const dateFactView = new DateFactView(dateFactContainer);
+  dateFactView.bindEvents();
+
+  const errorView = new ErrorView(dateFactContainer);
+  errorView.bindEvents();
 
 });

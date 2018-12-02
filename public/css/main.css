@@ -1,0 +1,32 @@
+h1 {
+  font-family: 'Fjalla One', sans-serif;
+  color: white;
+}
+
+p {
+  font-family: 'Anton', sans-serif;
+  font-size: 60px;
+}
+
+label {
+  font-family: 'Fjalla One', sans-serif;
+  color: white;
+}
+
+#date {
+  font-family: 'Fjalla One', sans-serif;
+  color: darkgrey;
+}
+
+input[type=submit] {
+  font-family: 'Fjalla One', sans-serif;
+}
+
+.div-header {
+  background-color: pink;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-top: 10px;
+  border-radius: 5px;
+}
